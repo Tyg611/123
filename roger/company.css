@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(233, 61, 49);
+}
+p.text {
+    color: #e0e0e0;
+    font-size: x-large;
+ }
+
+
+.image-placeholder {
+    width: 80%;
+    height: 180px;
+    background-color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-placeholder {
+    width: 100%;
+    height: 300px;
+    background-color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer {
+    text-align: center;
+}
+
+.social-icons img {
+    width: 30px;
+    margin: 0 10px;
+}

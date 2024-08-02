@@ -1,0 +1,12 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(233, 61, 49);
+}
+p.text {
+    color: #e0e0e0;
+    font-size: x-large;
+ }
+.social-icons img {
+    width: 30px;
+    margin: 0 10px;
+}

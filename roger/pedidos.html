@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="pedidos.css">
+</head>
+<body>
+    <h1>LISTA DE PEDIDOS</h1>
+    <input id="nuevaTarea" type="text" placeholder="Nueva tarea">
+    <button onclick="agregarTarea()">Agregar</button>
+    <table id="tablaTareas">
+        <thead>
+            <tr>
+                <th>pedido</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="tbodyTareas">
+            <!-- Aquí se agregarán las tareas -->
+        </tbody>
+    </table>
+
+    <script>
+        // Array que almacena las tareas
+        let tareas = [];
+
+        // Función que agrega una tarea
+        function agregarTarea() {
+            const nuevaTarea = document.getElementById("nuevaTarea").value;
+            if (nuevaTarea !== "") {
+                tareas.push({ tarea: nuevaTarea, estado: "pendiente" });
+                document.getElementById("nuevaTarea").value = "";
+                actualizarTabla();
+            }
+        }
+
+        // Función que actualiza la tabla
+        function actualizarTabla() {
+            const tbody = document.getElementById("tbodyTareas");
+            tbody.innerHTML = "";
+            tareas.forEach((tarea, index) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${tarea.tarea}</td>
+                    <td>${tarea.estado}</td>
+                    <td>
+                        <button onclick="cambiarEstado(${index})">Cambiar estado</button>
+                        <button onclick="eliminarTarea(${index})">Eliminar</button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Función que cambia el estado de una tarea
+        function cambiarEstado(index) {
+            tareas[index].estado = tareas[index].estado === "pendiente" ? "completada" : "pendiente";
+            actualizarTabla();
+        }
+
+        // Función que elimina una tarea
+        function eliminarTarea(index) {
+            tareas.splice(index, 1);
+            actualizarTabla();
+        }
+    </script>
+
+    <footer class="bg-light mt-5 p-4">
+        <div class="row">
+            <div class="col-md-4">
+                <p>Dirección de la empresa
+                </p>
+                <p>Atencion al cliente</p>
+            </div>
+            <div class="col-md-4">
+                <div class="social-icons">
+                    <a href="#"><img src="iconos/facebook-logo-circular-shape_44646.png" alt="Facebook"></a>
+                    <a href="#"><img src="iconos/instagram_1419647.png" alt="Instagram"></a>
+                    <a href="#"><img src="iconos/Tiwch.png" alt="Twitch"></a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="Buscar">
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
